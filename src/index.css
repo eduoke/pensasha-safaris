@@ -1,68 +1,131 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* African Safari Design System - Pensasha Safari Expeditions
+All colors MUST be HSL - inspired by Kenyan sunsets, wildlife, and landscapes
+*/
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Base colors */
+    --background: 45 15% 97%;
+    --foreground: 25 25% 15%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 25 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 25% 15%;
+
+    /* Safari-inspired primary palette */
+    --primary: 25 45% 25%; /* Deep safari brown */
+    --primary-foreground: 45 85% 95%;
+    --primary-glow: 35 65% 45%; /* Warm golden brown */
+
+    /* Sunset secondary palette */
+    --secondary: 20 85% 65%; /* Safari sunset orange */
+    --secondary-foreground: 25 25% 15%;
+
+    /* Muted earth tones */
+    --muted: 35 20% 88%;
+    --muted-foreground: 25 15% 45%;
+
+    /* Accent - Kenyan savanna green */
+    --accent: 75 35% 35%;
+    --accent-foreground: 45 85% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 45 85% 95%;
+
+    --border: 35 15% 85%;
+    --input: 35 15% 85%;
+    --ring: 25 45% 25%;
+
+    /* Safari-themed gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(25 45% 25% / 0.8), hsl(20 85% 65% / 0.6));
+    --gradient-sunset: linear-gradient(180deg, hsl(35 85% 75%), hsl(20 85% 65%));
+    --gradient-savanna: linear-gradient(135deg, hsl(75 35% 35%), hsl(65 45% 25%));
+    
+    /* Elegant shadows with safari colors */
+    --shadow-safari: 0 10px 40px hsl(25 45% 25% / 0.15);
+    --shadow-golden: 0 5px 25px hsl(35 65% 45% / 0.2);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
-  a:hover {
-    color: #747bff;
+
+  .dark {
+    /* Dark safari theme */
+    --background: 25 25% 8%;
+    --foreground: 45 85% 95%;
+
+    --card: 25 20% 12%;
+    --card-foreground: 45 85% 95%;
+
+    --popover: 25 20% 12%;
+    --popover-foreground: 45 85% 95%;
+
+    --primary: 35 65% 45%; /* Golden glow in dark */
+    --primary-foreground: 25 25% 8%;
+    --primary-glow: 45 75% 55%;
+
+    --secondary: 20 85% 65%;
+    --secondary-foreground: 25 25% 8%;
+
+    --muted: 25 15% 18%;
+    --muted-foreground: 35 20% 65%;
+
+    --accent: 75 35% 45%;
+    --accent-foreground: 25 25% 8%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 45 85% 95%;
+
+    --border: 25 15% 20%;
+    --input: 25 15% 20%;
+    --ring: 35 65% 45%;
+
+    /* Dark theme gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(25 25% 8% / 0.9), hsl(20 85% 65% / 0.4));
+    --gradient-sunset: linear-gradient(180deg, hsl(25 45% 15%), hsl(20 85% 25%));
+    --shadow-safari: 0 15px 50px hsl(0 0% 0% / 0.5);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
